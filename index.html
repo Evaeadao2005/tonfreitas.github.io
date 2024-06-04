@@ -72,6 +72,32 @@
             border-radius: 8px;
             transition: background-color 0.3s ease, transform 0.3s ease;
             margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .container a::before,
+        .container a::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #00f;
+            z-index: -1;
+            mix-blend-mode: screen;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .container a::before {
+            transform: rotate(45deg);
+        }
+        .container a::after {
+            transform: rotate(-45deg);
+        }
+        .container a:hover::before,
+        .container a:hover::after {
+            opacity: 1;
         }
         .container a:hover {
             background-color: #002244;
@@ -131,15 +157,17 @@
     </style>
 </head>
 <body>
-  <div class="container">
-    <img src="https://raw.githubusercontent.com/Evaeadao2005/tonfreitas.github.io/main/Images/cleyrton.png" alt="Foto de Cleyrton Freitas">
-    <h1>Cleyrton Freitas</h1>
-    <p>Cleyrton Freitas | Advogado desde 2019</p>
-    <a href="https://www.instagram.com/videosjuridicos/" target="_blank">Instagram</a>
-    <a href="https://api.whatsapp.com/send?phone=5585996466172" target="_blank">WhatsApp</a>
-    <a href="https://www.facebook.com/adv.cleyrtonfreitas/" target="_blank">Facebook</a>
-    <a href="https://raw.githubusercontent.com/Evaeadao2005/tonfreitas.github.io/main/Ebooks/20%20Principais%20Direitos%20Trabalhistas%20-%20E-BOOK.pdf" target="_blank">Download eBook Leis Trabalhistas</a>
-</div>
-<div class="credit">
-   Criado por <a href="https://www.instagram.com/victordalmon">@victordalmon</a>
-</div>
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/Evaeadao2005/tonfreitas.github.io/main/Images/cleyrton.png" alt="Foto de Cleyrton Freitas">
+        <h1>Cleyrton Freitas</h1>
+        <p>Cleyrton Freitas | Advogado desde 2019</p>
+        <a href="https://www.instagram.com/videosjuridicos/" target="_blank">Instagram</a>
+        <a href="https://api.whatsapp.com/send?phone=5585996466172" target="_blank">WhatsApp</a>
+        <a href="https://www.facebook.com/adv.cleyrtonfreitas/" target="_blank">Facebook</a>
+        <a href="https://raw.githubusercontent.com/Evaeadao2005/tonfreitas.github.io/main/Ebooks/20%20Principais%20Direitos%20Trabalhistas%20-%20E-BOOK.pdf" target="_blank">Download eBook Leis Trabalhistas</a>
+    </div>
+    <div class="credit">
+       Criado por <a href="https://www.instagram.com/victordalmon">@victordalmon</a>
+    </div>
+</body>
+</html>
