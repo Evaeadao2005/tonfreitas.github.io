@@ -74,20 +74,11 @@
             position: relative;
             overflow: hidden;
         }
-        .container a::before {
-            transform: rotate(45deg);
-        }
-        .container a::after {
-            transform: rotate(-45deg);
-        }
-        .container a:hover::before,
-        .container a:hover::after {
-            opacity: 1;
-        }
         .container a:hover {
             background-color: #002244;
             transform: scale(1.05);
         }
+
         @media (max-width: 600px) {
             .container {
                 padding: 20px;
@@ -106,6 +97,8 @@
                 width: 150px; /* Ajuste o tamanho da imagem para telas menores */
             }
         }
+
+        /* Animações */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -135,26 +128,28 @@
             }
         }
 
+        /* Estilos do Footer */
         footer {
-            background-color: #003366; /* Cor de fundo escura */
-            color: #fff; /* Texto branco */
-            padding: 20px 0;
+            background-color: #003366;
+            color: #fff;
+            padding: 30px 20px;
             text-align: center;
             font-size: 14px;
             position: relative;
             z-index: 2;
-            border-top: 2px solid #fff; /* Linha superior */
+            border-top: 2px solid #fff;
+            margin-top: 50px;
         }
 
         footer a {
-            color: #00B4E4; /* Cor de link vibrante */
+            color: #00B4E4;
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s ease;
         }
 
         footer a:hover {
-            color: #ffcc00; /* Mudança de cor no hover */
+            color: #ffcc00;
         }
 
         .footer-container p {
@@ -163,7 +158,7 @@
 
         @media (max-width: 600px) {
             footer {
-                padding: 15px 0;
+                padding: 20px 10px;
             }
             footer p {
                 font-size: 12px;
@@ -188,9 +183,9 @@
 
     <footer>
         <div class="footer-container">
-            <p>© 2024 Espaço Cor - Todos os direitos reservados</p>
+            <p>© 2024 Cleyrton Freitas | Todos os direitos reservados</p>
             <p>Criado com ❤️ por 
-                <a href="https://instagram.com/agenciadalmon" target="_blank">Agência Dalmon - @agenciadalmon</a>
+                <a href="https://instagram.com/agenciadalmon" target="_blank">Agência Dalmon</a>
             </p>
         </div>
     </footer>
