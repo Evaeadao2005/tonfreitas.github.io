@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirme seu Seguimento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        #container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Baixe seu eBook de Direito Trabalhista</h1>
+        <p>Para acessar o eBook, você precisa confirmar que está seguindo @videosjuridicos no Instagram.</p>
+        <p>Insira o seu @ abaixo e aguarde a análise:</p>
+        <input type="text" id="username" placeholder="Seu @ do Instagram">
+        <button onclick="checkFollow()">Verificar</button>
+        <p id="message"></p>
+        <p id="note" style="margin-top: 20px; color: #888; font-size: 14px;">O download do eBook só será liberado após a confirmação do seguimento.</p>
+    </div>
+
+    <script>
+        let attempts = 0;
+
+        function checkFollow() {
+            const username = document.getElementById('username').value;
+            const message = document.getElementById('message');
+
+            if (!username) {
+                message.textContent = 'Por favor, insira o seu @ do Instagram.';
+                message.style.color = 'red';
+                return;
+            }
+
+            message.textContent = 'Analisando...';
+            message.style.color = 'black';
+
+            setTimeout(() => {
+                attempts++;
+
+                if (attempts === 1) {
+                    message.textContent = 'Erro: parece que você ainda não segue @videosjuridicos. Por favor, siga e tente novamente!';
+                    message.style.color = 'red';
+                } else {
+                    message.textContent = 'Sucesso! Você está seguindo @videosjuridicos. Faça o download do seu eBook abaixo:';
+                    message.style.color = 'green';
+
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = 'ebook-direito-trabalhista.pdf'; // Substitua pelo link real do eBook
+                    downloadLink.textContent = 'Baixar eBook';
+                    downloadLink.style.display = 'block';
+                    downloadLink.style.marginTop = '20px';
+                    downloadLink.style.color = '#007BFF';
+                    downloadLink.style.textDecoration = 'none';
+
+                    document.getElementById('container').appendChild(downloadLink);
+                }
+            }, 5000); // Simula análise de 5 segundos
+        }
+    </script>
+</body>
+</html>
