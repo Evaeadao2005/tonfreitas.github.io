@@ -6,51 +6,89 @@
     <title>Confirme seu Seguimento</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             text-align: center;
             padding: 20px;
             background-color: #f4f4f9;
+            transition: background-color 0.3s ease;
+        }
+        body.dark-mode {
+            background-color: #121212;
+            color: #eaeaea;
         }
         #container {
             max-width: 500px;
             margin: 50px auto;
             background: #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
             padding: 20px;
+            transition: box-shadow 0.3s ease;
+        }
+        body.dark-mode #container {
+            background: #333;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
         }
         h1 {
-            color: #333;
+            color: #007BFF;
+            font-size: 32px;
+            transition: color 0.3s ease;
+        }
+        body.dark-mode h1 {
+            color: #64B5F6;
         }
         p {
             color: #555;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+        body.dark-mode p {
+            color: #ddd;
         }
         input {
             width: 80%;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 12px;
+            margin: 12px 0;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+        input:focus {
+            border-color: #007BFF;
+            outline: none;
         }
         button {
-            padding: 10px 20px;
+            padding: 12px 24px;
             background-color: #007BFF;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         button:hover {
             background-color: #0056b3;
+            transform: scale(1.05);
         }
         button:focus {
-            outline: 2px solid #0056b3;
-            outline-offset: 2px;
+            outline: 3px solid #0056b3;
         }
         #message {
             margin-top: 20px;
-            font-size: 16px;
+            font-size: 18px;
             color: #333;
+        }
+        body.dark-mode #message {
+            color: #eee;
+        }
+        #note {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+        body.dark-mode #note {
+            color: #aaa;
         }
     </style>
 </head>
@@ -64,9 +102,7 @@
         <input type="text" id="username" placeholder="Seu @usuário do Instagram">
         <button onclick="checkFollow()">Verificar</button>
         <p id="message"></p>
-        <p id="note" style="margin-top: 20px; color: #888; font-size: 14px;">
-            O download do eBook só será liberado após a confirmação do seguimento.
-        </p>
+        <p id="note" style="margin-top: 20px;">O download do eBook só será liberado após a confirmação do seguimento.</p>
     </div>
 
     <script>
@@ -76,22 +112,18 @@
             const username = document.getElementById('username').value;
             const message = document.getElementById('message');
 
-            // Validação do campo de texto
             if (!username) {
                 message.textContent = 'Por favor, insira o seu @usuário do Instagram.';
                 message.style.color = 'red';
                 return;
             }
 
-            // Mensagem de análise
             message.textContent = 'Analisando...';
             message.style.color = 'black';
 
-            // Simulação de análise
             setTimeout(() => {
                 attempts++;
 
-                // Simular falha na primeira tentativa
                 if (attempts === 1) {
                     message.innerHTML = `
                         Erro: parece que você ainda não segue 
@@ -105,8 +137,8 @@
                         Faça o download do seu eBook abaixo:
                     `;
 
-                    // Criar link de download, se ainda não existir
-                    if (!document.getElementById('downloadLink')) {
+                    const existingDownloadLink = document.getElementById('downloadLink');
+                    if (!existingDownloadLink) {
                         const downloadLink = document.createElement('a');
                         downloadLink.id = 'downloadLink';
                         downloadLink.href = '/downloadebooktrabalhista/E-BOOK%20-%20Os%2020%20Principais%20Direitos%20Trabalhistas.pdf';
