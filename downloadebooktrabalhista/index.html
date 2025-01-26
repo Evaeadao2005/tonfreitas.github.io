@@ -98,8 +98,8 @@
         <p>Para acessar o eBook, você precisa confirmar que está seguindo 
             <a href="https://www.instagram.com/videosjuridicos" target="_blank" style="color: blue; text-decoration: underline;">@videosjuridicos</a> no Instagram.
         </p>
-        <p>Insira o seu @usuário abaixo e aguarde a análise:</p>
-        <input type="text" id="username" placeholder="Seu @usuário do Instagram">
+        <p>Insira o seu usuário no instagram abaixo e aguarde a análise:</p>
+        <input type="text" id="username" placeholder="Seu usuário no Instagram">
         <button onclick="checkFollow()">Verificar</button>
         <p id="message"></p>
         <p id="note" style="margin-top: 20px;">O download do eBook só será liberado após a confirmação do seguimento.</p>
@@ -113,7 +113,7 @@
             const message = document.getElementById('message');
 
             if (!username) {
-                message.textContent = 'Por favor, insira o seu @usuário do Instagram.';
+                message.textContent = 'Por favor, insira o seu usuário no Instagram.';
                 message.style.color = 'red';
                 return;
             }
