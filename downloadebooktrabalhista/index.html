@@ -43,6 +43,10 @@
         button:hover {
             background-color: #0056b3;
         }
+        button:focus {
+            outline: 2px solid #0056b3;
+            outline-offset: 2px;
+        }
         #message {
             margin-top: 20px;
             font-size: 16px;
@@ -53,13 +57,16 @@
 <body>
     <div id="container">
         <h1>Baixe seu eBook de Direito Trabalhista</h1>
-<p>Para acessar o eBook, você precisa confirmar que está seguindo <a href="https://www.instagram.com/videosjuridicos" target="_blank" style="color: blue; text-decoration: underline;">@videosjuridicos</a> no Instagram.</p>
-
+        <p>Para acessar o eBook, você precisa confirmar que está seguindo 
+            <a href="https://www.instagram.com/videosjuridicos" target="_blank" style="color: blue; text-decoration: underline;">@videosjuridicos</a> no Instagram.
+        </p>
         <p>Insira o seu @usuário abaixo e aguarde a análise:</p>
         <input type="text" id="username" placeholder="Seu @usuário do Instagram">
         <button onclick="checkFollow()">Verificar</button>
         <p id="message"></p>
-        <p id="note" style="margin-top: 20px; color: #888; font-size: 14px;">O download do eBook só será liberado após a confirmação do seguimento.</p>
+        <p id="note" style="margin-top: 20px; color: #888; font-size: 14px;">
+            O download do eBook só será liberado após a confirmação do seguimento.
+        </p>
     </div>
 
     <script>
@@ -69,38 +76,51 @@
             const username = document.getElementById('username').value;
             const message = document.getElementById('message');
 
+            // Validação do campo de texto
             if (!username) {
                 message.textContent = 'Por favor, insira o seu @usuário do Instagram.';
                 message.style.color = 'red';
                 return;
             }
 
+            // Mensagem de análise
             message.textContent = 'Analisando...';
             message.style.color = 'black';
 
+            // Simulação de análise
             setTimeout(() => {
                 attempts++;
 
-              if (attempts === 1) {
-    message.innerHTML = 'Erro: parece que você ainda não segue <a href="https://www.instagram.com/videosjuridicos" target="_blank" style="color: red; text-decoration: underline;">@videosjuridicos</a>. Por favor, siga e tente novamente!';
-    message.style.color = 'red';
-} else {
-    message.innerHTML = 'Sucesso! Você está seguindo <a href="https://www.instagram.com/videosjuridicos" target="_blank" style="color: green; text-decoration: underline;">@videosjuridicos</a>. Faça o download do seu eBook abaixo:';
-    message.style.color = 'green';
-}
+                // Simular falha na primeira tentativa
+                if (attempts === 1) {
+                    message.innerHTML = `
+                        Erro: parece que você ainda não segue 
+                        <a href="https://www.instagram.com/videosjuridicos" target="_blank" style="color: red; text-decoration: underline;">@videosjuridicos</a>. 
+                        Por favor, siga e tente novamente!
+                    `;
+                } else {
+                    message.innerHTML = `
+                        Sucesso! Você está seguindo 
+                        <a href="https://www.instagram.com/videosjuridicos" target="_blank" style="color: green; text-decoration: underline;">@videosjuridicos</a>. 
+                        Faça o download do seu eBook abaixo:
+                    `;
 
-                    const downloadLink = document.createElement('a');
-                    downloadLink.href = '/downloadebooktrabalhista/E-BOOK%20-%20Os%2020%20Principais%20Direitos%20Trabalhistas.pdf';
-                    downloadLink.textContent = 'Baixar eBook';
-                    downloadLink.style.display = 'block';
-                    downloadLink.style.marginTop = '20px';
-                    downloadLink.style.color = '#007BFF';
-                    downloadLink.style.textDecoration = 'none';
+                    // Criar link de download, se ainda não existir
+                    if (!document.getElementById('downloadLink')) {
+                        const downloadLink = document.createElement('a');
+                        downloadLink.id = 'downloadLink';
+                        downloadLink.href = '/downloadebooktrabalhista/E-BOOK%20-%20Os%2020%20Principais%20Direitos%20Trabalhistas.pdf';
+                        downloadLink.textContent = 'Baixar eBook';
+                        downloadLink.style.display = 'block';
+                        downloadLink.style.marginTop = '20px';
+                        downloadLink.style.color = '#007BFF';
+                        downloadLink.style.textDecoration = 'none';
 
-                    document.getElementById('container').appendChild(downloadLink);
+                        document.getElementById('container').appendChild(downloadLink);
+                    }
                 }
             }, 5000); // Simula análise de 5 segundos
-        }    </script>
+        }
     </script>
 </body>
 </html>
